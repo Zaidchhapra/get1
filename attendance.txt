@@ -1,0 +1,504 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+buffer overflow attack
+#include <stdio.h>
+#include <string.h>
+#include <inttypes.h>
+ int main(void)
+ {
+ char check_buff[15]="Buffer Overflow";
+ char buff[15];
+ int pass = 0;
+ int i;
+ printf("Buffer message in memory\n");
+ for(i=0; i<15; i++)
+ printf("Address of %i is %c = %lu\n", i,check_buff[i],(uintptr)check_buff+i);
+ printf("\n Enter the password : \n");
+ gets(buff);
+ if(strcmp(buff, "thegeekstuff"))
+ {
+ printf ("\n Wrong Password \n");
+ }
+ else
+ {
+ printf ("\n Correct Password \n");
+ pass = 1;
+ }
+ if(pass)
+ {
+ printf ("\n Root privileges given to the user \n");
+ }
+ else
+ {
+ printf ("Password in memory \n");
+ for(i=0; i<30; i++)
+ printf("Address of %i is %c = %lu\n",i,check_buff[i],(uintptr)check_buff+i);
+ }}
+
+
+ Format String
+ #include<stdio.h>
+ void main(int argc, char **argv)
+ {
+ printf("%s\n",argv[1]);
+ printf(argv[1]);
+ printf("\n");
+ }
+
+
+Format String Attack to gain access to the memory location
+ #include<stdio.h>
+ void main(int argc, char **argv)
+ {
+char buffer[100];
+ printf(buffer,argv[1], 100);
+ printf(buffer);
+ printf("\n");
+return 0;
+ }
+
+
+Format String Attack to access the value stored in a variable
+ #include<stdio.h>
+ #include<string.h>
+ int main()
+ {
+ int secnum=0x8badf00d;
+ char num[64]={0};
+ read(0, name, 64);
+ printf("Hello ");
+ printf(name);
+ printf("You'll never get my secret!\n");
+ return 0;
+ }
